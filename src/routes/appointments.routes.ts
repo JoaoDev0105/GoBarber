@@ -5,7 +5,13 @@ import { startOfHour, parseISO} from 'date-fns'
 
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository(); // Instanciando a classe
+  
+  // SoC: Separtion of Concerns (Separação de preoucupações)
 
+appointmentsRouter.get('/', (request, response) => {
+  const appointments = appointmentsRepository.all();
+  return response.json(appointments);
+});
 
 appointmentsRouter.post('/', (request, response) => {
   
